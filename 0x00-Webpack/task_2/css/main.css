@@ -1,0 +1,13 @@
+#count {
+    font-weight: bold;
+    display: inline;
+}
+
+#logo {
+    width: 200px;
+    height: 200px;
+    background: url('../assests/holberton-logo.jpg');
+    background-size: 200px 200px;
+
+
+}
