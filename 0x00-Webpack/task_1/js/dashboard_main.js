@@ -11,7 +11,7 @@ $('<p>Copyright - Holberton School</p>').appendTo('body');
 
 function updateCounter() {
   count++;
-  $('#count').html(`${counter} clicks on the button`);
+  $('#count').html(`${count} clicks on the button`);
 }
 
 $('button').on('click', _.debounce(updateCounter, 500));
