@@ -2,14 +2,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'js/dashboard_main.js'),
+    devtool: 'inline-source-map',
+    entry: path.resolve(__dirname, '/src/index.js'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, 'build'),
     },
     devServer: {
         contentBase: './deploy',
-        open: true
+        open: true,
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 3000,
+        hot: true,
       },
   plugins: [
     new HtmlWebpackPlugin({
