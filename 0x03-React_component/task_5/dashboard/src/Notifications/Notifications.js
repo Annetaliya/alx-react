@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
-// import { getLatestNotification } from "../utils/utils";
 import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
 import NotificationItemShape from "./NotificationItemShape";
@@ -9,8 +8,12 @@ import NotificationItemShape from "./NotificationItemShape";
 class Notifications extends Component {
   markAsRead = (id) => {
     console.log(`Notification ${id} has been marked as read.`);
-
   };
+
+  shouldComponentUpdate(nextProps) {
+    // Only update if the length of the new listNotifications is greater than the previous one
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
+  }
 
   render() {
     const { displayDrawer, listNotifications } = this.props;
@@ -18,13 +21,23 @@ class Notifications extends Component {
     return (
       <React.Fragment>
         {displayDrawer ? (
-          <div className="'flex-area'">
+          <div className="flex-area">
             <div className="menuItem">
               <p>Your notifications</p>
             </div>
             <div className="Notifications">
               <button
-                style={{ color: "#3a3a3a", fontWeight: "bold", background: "none", border: "none", fontSize: "10px", position: "absolute", right: "2px", top: "2px", cursor: "pointer" }}
+                style={{
+                  color: "#3a3a3a",
+                  fontWeight: "bold",
+                  background: "none",
+                  border: "none",
+                  fontSize: "10px",
+                  position: "absolute",
+                  right: "2px",
+                  top: "2px",
+                  cursor: "pointer",
+                }}
                 aria-label="Close"
                 onClick={() => console.log("Close button has been clicked")}
               >
