@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         border: '1px solid #ddd',
     },
-    td: {
+    th: {
         width: '80%',
     }
 })
