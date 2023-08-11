@@ -2,16 +2,34 @@
 import logo from '../assets/holberton-logo.jpg';
 import React from 'react';
 import { StyleSheet, css } from "aphrodite";
+import { AppContext } from "../App/AppContext";
 
 
-export default function Hader () {
+export default function Header () {
+
+  const { user, logout } = useContext(AppContext);
     return (
+      <React.Fragment>
         <header className={css(styleHeader.hederbg)}>
-        <img src={logo} className={css(styleHeader.appLogo)} alt="logo" />
-        <h1>School dashboard</h1>
+          <img src={logo} className={css(styleHeader.appLogo)} alt="logo" />
+          <h1>School dashboard</h1>
+        </header>
+        {user.isLoggedIn && (
+          <section className={css(styles.greeting)} id="logoutSection">
+            Welcome<strong> {user.email} </strong>
+            <em>
+              <a href='#' onClick={logOut}>
+                (logout)
+              </a>
+            </em>
+          </section>
+
+        )}
+
+      </React.Fragment>
+    );
         
-      </header>
-    )
+    
 }
 
 const styleHeader = StyleSheet.create({
@@ -29,5 +47,9 @@ const styleHeader = StyleSheet.create({
   appLogo: {
     height: '200px',
     pointerEvents: 'none',
+  },
+
+  greeting: {
+    marginTop: '1rem',
   },
 })
